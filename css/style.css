@@ -1,6 +1,7 @@
 *  {
     margin: 0;
     padding: 0;
+    box-sizing: border-box
 }    
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
@@ -11,12 +12,33 @@
     font-family: 'Poppins',sans-serif;
 }
 body{
-    background-image: url(../img/academiaLOGO.jpg);
+    width: 100%;
+    padding: 300px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #dfdfdf;
+    background-image: linear-gradient( 45deg, rgb(44, 43, 43), rgb(0, 140, 255), orange);
+    background-size: 500% 100%;
+    animation: degrade-animation 5s infinite alternate;
+}
+@keyframes degrade-animation {
+    0%{
+        background-position: 0%;
+    }
+    100%{
+        background-position: 100%;
+    }
+}
+
+@keyframes fade-in {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+    
 }
 .login-box{
     display: flex;
@@ -25,15 +47,33 @@ body{
     width: 440px;
     height: 480px;
     padding: 30px;
+    animation: fade-in 3s 1;
 }
+
+
 .login-header{
     text-align: center;
     margin: 20px 0 40px 0;
 }
 .login-header header{
-    color: #333;
-    font-size: 30px;
-    font-weight: 600;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #f0e8e8;
+    font-size: 40px;
+    font-weight: 200;
+    letter-spacing: 2px;
+    -webkit-text-stroke: 1px #000;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    
 }
 .input-box .input-field{
     width: 100%;
@@ -46,6 +86,7 @@ body{
     box-shadow: 0px 5px 10px 1px rgba(0,0,0, 0.05);
     outline: none;
     transition: .3s;
+    animation: slideInRight 1s 1;
 }
 ::placeholder{
     font-weight: 500;
@@ -63,7 +104,7 @@ section{
     display: flex;
     align-items: center;
     font-size: 14px;
-    color: #555;
+    color: #f3e9e9;
 }
 #check{
     margin-right: 10px;
@@ -71,28 +112,37 @@ section{
 a{
     text-decoration: none;
 }
-a:hover{
-    text-decoration: underline;
-}
 section a{
-    color: #555;
+    color: #f3e9e9;
 }
 .input-submit{
     position: relative;
+    
+}
+.input-submit::before{
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 .submit-btn{
     width: 100%;
-    height: 60px;
-    background: #222;
+    height: 30px;
+    background: #747474;
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    transition: .3s;
+    transition: .5s;
+    animation: slideInRight 1s 1;
 }
+
 .input-submit label{
     position: absolute;
-    top: 45%;
+    top: 47%;
     left: 50%;
+    letter-spacing: 1px;
     color: #fff;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -101,15 +151,65 @@ section a{
 }
 .submit-btn:hover{
     background: #000;
-    transform: scale(1.05,1);
+    transform: scale(1.2);
+    z-index: -1;
 }
+
+
+
 .sign-up-link{
     text-align: center;
     font-size: 15px;
     margin-top: 20px;
+    
 }
 .sign-up-link a{
-    color: #000;
-    font-weight: 600;
+    padding: 8px;
+    color: #f3e9e9;
+    font-weight: 400;
+    letter-spacing: 1px;
+    transition: .5s;
+    display: block;
+    position: relative;
+    margin-top: 10px;
+    z-index: 1;
+    animation: slideInRight 1s 1;  
+    outline: none;
+    background: #747474;
+    border: none;
+    border-radius: 30px;
+    
 }
+.sign-up-link a:hover{
+    transform: scale(1.2);
+    background: #000;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+
+}
+
+.sign-up-link a::before{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    border: none;
+    background-color: #1d1c1c;
+    z-index: -1;
+    transform-origin: right;
+    transform: scaleX(0);
+}
+.sign-up-link a:hover::before{
+    transform-origin: left;
+    transform: scaleX(1);
+    transition: transform .2s;
+}
+.sign-up-link p{
+color: #f3e9e9;
+}
+
 
